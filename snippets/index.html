@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Who Wants To Be a Milionaire?</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.9/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+
+  <div class="todo-form">
+    <input type="text" name="new" v-model="newTodo">
+    <button @click="addTodo">➕➕➕</button>
+    <ul>
+      <todo-item
+        v-for="todo in filteredTodos"
+        v-bind:text="todo"
+        v-bind:key="todo">
+    </todo-item>
+    </ul>
+  </div>
+
+</div>
+<script>
+  Vue.component('todo-item', {
+    template: '<li>{{text}}</li>',
+    props: ['text'],
+  })
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      todos: [
+        'kup kawe',
+        'zrob mleko',
+        'napisz appke w vue',
+        'wrzuc tweeta'
+      ],
+      newTodo: ''
+    },
+    methods: {
+      addTodo: function() {
+        this.todos.push(this.newTodo);
+        this.newTodo = '';
+      }
+    },
+    computed: {
+      filteredTodos: function() {
+        return this.todos.filter((item) => !this.newTodo || item.indexOf(this.newTodo) !== -1);
+      }
+    }
+  })
+</script>
+</body>
+</html>
