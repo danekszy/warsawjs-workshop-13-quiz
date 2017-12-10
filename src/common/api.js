@@ -4,7 +4,7 @@ import mockResponse from './mockResponse.json'
 import { DIFFICULTY_LEVELS } from './const'
 
 const QUESTION_API_ENDPOINT = 'https://opentdb.com/api.php'
-const MOCK = true
+const MOCK = false
 
 const mapApiQuestionToAppQuestion = q => {
   const answers = shuffle([

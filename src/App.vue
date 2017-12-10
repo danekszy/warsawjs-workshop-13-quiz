@@ -1,18 +1,16 @@
 <template>
   <div class="c-main-container container is-widescreen">
-    <router-view></router-view>
+    <transition name="fade" mode="out-in">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
 
 <script>
-  import IntroView from './components/IntroView'
-  import router from './router'
-
   export default {
     name: 'app',
-    components: { IntroView },
-    router
+    components: {}
   }
 </script>
 
